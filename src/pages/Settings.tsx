@@ -3,7 +3,7 @@ import { Building2, Download, Moon, RefreshCw, Save, Sun, Trash2, Upload, Zap } 
 import { useStore } from "../store";
 import { calcQuote, downloadFile, fmtDate, toCsv } from "../calc";
 import { IVA_PRESETS, STATUS_META } from "../types";
-import { Button, Card, Confirm, Input, Segmented, Select, Textarea, cn } from "../components/ui";
+import { Button, Card, Confirm, Input, Segmented, Select, Textarea } from "../components/ui";
 
 export default function SettingsPage() {
   const { db, updateCompany, toast, theme, toggleTheme, importDb, resetDemo, wipeAll } = useStore();
@@ -71,9 +71,10 @@ export default function SettingsPage() {
       ["Código", "Descrição", "Tipo", "Categoria", "Subcategoria", "Unidade", "Fabricante", "Referência", "Fornecedor", "Custo", "PVP", "IVA"],
       ...db.articles.map((a) => [a.code, a.description, a.kind, a.category, a.subcategory, a.unit, a.manufacturer, a.reference, a.supplier, a.cost.toFixed(2), a.price.toFixed(2), a.iva]),
     ];
-    downloadFile("orcamentos.csv", toCsv(quotes), "text/csv");
-    window.setTimeout(() => downloadFile("clientes.csv", toCsv(clients), "text/csv"), 300);
-    window.setTimeout(() => downloadFile("artigos.csv", toCsv(articles), "text/csv"), 600);
+    const copyright = ["© 2026 Luís Garcês — Todos os Direitos Reservados · Electro-Cotação Pro"];
+    downloadFile("orcamentos.csv", toCsv([...quotes, [], copyright]), "text/csv");
+    window.setTimeout(() => downloadFile("clientes.csv", toCsv([...clients, [], copyright]), "text/csv"), 300);
+    window.setTimeout(() => downloadFile("artigos.csv", toCsv([...articles, [], copyright]), "text/csv"), 600);
     toast("3 ficheiros CSV exportados");
   };
 
@@ -219,10 +220,6 @@ export default function SettingsPage() {
           </Button>
         </div>
       </Card>
-
-      <p className={cn("pb-2 text-center text-[11px] text-faint")}>
-        <span className="font-display font-bold text-mut">ELECTRO-COTAÇÃO PRO</span> · v1.0 · “Do primeiro ponto ao orçamento final.”
-      </p>
 
       <Confirm
         open={confirmReset}

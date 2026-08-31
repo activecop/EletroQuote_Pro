@@ -359,7 +359,19 @@ export function Layout({ children }: { children: ReactNode }) {
           </div>
         </header>
 
-        <main className="mx-auto max-w-7xl px-4 pb-32 pt-6 lg:px-8 lg:pb-14">{children}</main>
+        <main className="mx-auto max-w-7xl px-4 pb-32 pt-6 lg:px-8 lg:pb-14">
+          {children}
+          <footer className="mt-12 border-t border-line pt-6 text-center">
+            <div className="flex items-center justify-center gap-2">
+              <span className="flex h-5 w-5 items-center justify-center rounded-[6px] bg-volt text-voltink">
+                <Zap className="h-3 w-3" strokeWidth={2.5} />
+              </span>
+              <span className="font-display text-[11px] font-bold tracking-[0.16em] text-ink">ELECTRO-COTAÇÃO PRO</span>
+            </div>
+            <p className="mt-2 text-[11px] font-medium text-mut">© 2026 Luís Garcês — Todos os Direitos Reservados</p>
+            <p className="mt-0.5 pb-1 text-[10px] text-faint">“Do primeiro ponto ao orçamento final.”</p>
+          </footer>
+        </main>
       </div>
 
       {/* bottom nav mobile */}

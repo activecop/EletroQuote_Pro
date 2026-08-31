@@ -171,7 +171,8 @@ export default function Reports() {
         (t.total / 100).toFixed(2),
       ];
     });
-    downloadFile(`relatorio-orcamentos-${new Date().toISOString().slice(0, 10)}.csv`, toCsv([header, ...body]), "text/csv");
+    const copyright = ["© 2026 Luís Garcês — Todos os Direitos Reservados · Electro-Cotação Pro"];
+    downloadFile(`relatorio-orcamentos-${new Date().toISOString().slice(0, 10)}.csv`, toCsv([header, ...body, [], copyright]), "text/csv");
     toast("Relatório CSV exportado");
   };
 
