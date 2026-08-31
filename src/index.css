@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-display: "Space Grotesk", "Instrument Sans", ui-sans-serif, sans-serif;
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-raise: var(--raise);
+  --color-sunken: var(--sunken);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-mut: var(--mut);
+  --color-faint: var(--faint);
+  --color-volt: var(--volt);
+  --color-voltink: var(--voltink);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --color-info: var(--info);
+}
+
+:root {
+  --paper: #eef0f3;
+  --card: #ffffff;
+  --raise: #f6f7f9;
+  --sunken: #e5e8ed;
+  --line: #e0e4ea;
+  --ink: #131a27;
+  --mut: #5b6577;
+  --faint: #99a2b3;
+  --volt: #ffc61a;
+  --voltink: #221a00;
+  --ok: #149e63;
+  --warn: #dd7c07;
+  --bad: #e5484d;
+  --info: #2f7de1;
+  color-scheme: light;
+}
+
+.dark {
+  --paper: #0b1120;
+  --card: #111a2e;
+  --raise: #17213a;
+  --sunken: #0d1425;
+  --line: #24304c;
+  --ink: #e9eef8;
+  --mut: #93a2bd;
+  --faint: #5d6b88;
+  --volt: #ffcf33;
+  --voltink: #221a00;
+  --ok: #2ecf89;
+  --warn: #ffa02e;
+  --bad: #ff6369;
+  --info: #5aa2ff;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  transition:
+    background-color 0.22s linear,
+    border-color 0.22s linear;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv02", "cv03";
+  -webkit-font-smoothing: antialiased;
+  min-height: 100dvh;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--volt);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 8px;
+  border: 2px solid var(--paper);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--faint);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.anim-rise {
+  animation: rise 0.45s cubic-bezier(0.22, 0.9, 0.3, 1) both;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.955) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.anim-pop {
+  animation: pop 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.25) both;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.anim-fade {
+  animation: fadein 0.2s ease both;
+}
+
+@keyframes sheetup {
+  from {
+    opacity: 0.4;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.anim-sheet {
+  animation: sheetup 0.28s cubic-bezier(0.22, 0.9, 0.3, 1) both;
+}
+
+@keyframes toastin {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.anim-toast {
+  animation: toastin 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: -460px 0;
+  }
+  to {
+    background-position: 460px 0;
+  }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--raise) 25%, var(--sunken) 40%, var(--raise) 65%);
+  background-size: 460px 100%;
+  animation: shimmer 1.25s linear infinite;
+  border-radius: 8px;
+}
+
+@keyframes growbar {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+.anim-bar {
+  transform-origin: bottom;
+  transform-box: fill-box;
+  animation: growbar 0.7s cubic-bezier(0.22, 0.9, 0.3, 1) both;
+}
+
+@keyframes pulseglow {
+  0%,
+  100% {
+    box-shadow: 0 8px 24px -6px color-mix(in oklab, var(--volt) 55%, transparent);
+  }
+  50% {
+    box-shadow: 0 8px 34px -4px color-mix(in oklab, var(--volt) 80%, transparent);
+  }
+}
+.anim-glow {
+  animation: pulseglow 2.6s ease-in-out infinite;
+}
+
+@keyframes blinkdot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.anim-blink {
+  animation: blinkdot 1.8s ease-in-out infinite;
+}
+
+.doc-shadow {
+  box-shadow:
+    0 0 0 1px rgba(15, 23, 42, 0.06),
+    0 24px 60px -18px rgba(15, 23, 42, 0.35);
+}
