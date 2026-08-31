@@ -39,3 +39,24 @@ public/                → manifest.json, service worker, ícones
 
 Todos os valores monetários são calculados em **cêntimos inteiros**, evitando erros de
 virgula flutuante. Nenhum dado sai do dispositivo.
+
+## Build e publicação
+
+A pasta `dist/` (site final) é **gerada pelo build** — não faz parte do código fonte.
+
+**Automático (recomendado):**
+
+- Windows: duplo clique em **`build.bat`**
+- Linux/macOS: `chmod +x build.sh && ./build.sh`
+
+**Manual:**
+
+```bash
+npm install
+npm run build
+```
+
+Depois, copie o **conteúdo** de `dist/` para o servidor (raiz do Neocities ou
+`www/` do Laragon). Os caminhos são relativos, pelo que funciona em qualquer subpasta.
+
+© 2026 Luís Garcês — Todos os Direitos Reservados.
