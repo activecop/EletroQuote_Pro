@@ -37,7 +37,7 @@ export default function SettingsPage() {
   };
 
   const exportJson = () => {
-    downloadFile(`electroquote-backup-${new Date().toISOString().slice(0, 10)}.json`, JSON.stringify(db, null, 2), "application/json");
+    downloadFile(`electro-cotacao-backup-${new Date().toISOString().slice(0, 10)}.json`, JSON.stringify(db, null, 2), "application/json");
     toast("Backup JSON exportado");
   };
 
@@ -86,7 +86,7 @@ export default function SettingsPage() {
         if (!d || typeof d !== "object" || !Array.isArray(d.quotes)) throw new Error("inválido");
         importDb(d);
       } catch {
-        toast("Ficheiro inválido — use um backup JSON do ELETROQUOTE PRO", "bad");
+        toast("Ficheiro inválido — use um backup JSON do Electro-Cotação Pro", "bad");
       }
     };
     r.readAsText(f);
@@ -184,7 +184,7 @@ export default function SettingsPage() {
               <Zap className="h-4.5 w-4.5 text-volt" /> Aplicação instalável (PWA)
             </h3>
             <p className="text-xs leading-relaxed text-mut">
-              O ELETROQUOTE PRO funciona 100% offline — os dados ficam guardados localmente no seu dispositivo. Num smartphone, use
+              O Electro-Cotação Pro funciona 100% offline — os dados ficam guardados localmente no seu dispositivo. Num smartphone, use
               “Adicionar ao ecrã principal” no menu do navegador para a instalar como uma aplicação nativa. A arquitetura já está preparada
               para futura sincronização quando houver ligação.
             </p>
@@ -221,7 +221,7 @@ export default function SettingsPage() {
       </Card>
 
       <p className={cn("pb-2 text-center text-[11px] text-faint")}>
-        <span className="font-display font-bold text-mut">ELETROQUOTE PRO</span> · v1.0 · “Do primeiro ponto ao orçamento final.”
+        <span className="font-display font-bold text-mut">ELECTRO-COTAÇÃO PRO</span> · v1.0 · “Do primeiro ponto ao orçamento final.”
       </p>
 
       <Confirm

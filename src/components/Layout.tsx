@@ -29,8 +29,8 @@ export function Logo({ compact = false }: { compact?: boolean }) {
         <Zap className="h-5 w-5 text-voltink" fill="currentColor" strokeWidth={1} />
       </span>
       {!compact && (
-        <span className="font-display text-[15px] font-bold leading-none tracking-tight text-ink">
-          ELETROQUOTE<span className="ml-1 text-volt">PRO</span>
+        <span className="font-display text-[13px] font-bold leading-none tracking-tight text-ink">
+          ELECTRO-COTAÇÃO<span className="ml-1 text-volt">PRO</span>
           <span className="mt-1 block text-[9px] font-medium uppercase tracking-[0.18em] text-faint">
             do primeiro ponto ao orçamento final
           </span>

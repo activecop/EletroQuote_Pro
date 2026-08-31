@@ -1,6 +1,6 @@
-/* ELETROQUOTE PRO — service worker com caminhos RELATIVOS
+/* ELECTRO-COTAÇÃO PRO — service worker com caminhos RELATIVOS
    Funciona na raiz de um domínio, em subpastas (Laragon) e na Neocities. */
-const CACHE = "electroquote-pro-v2";
+const CACHE = "electro-cotacao-pro-v1";
 const CORE = ["./", "./index.html", "./manifest.json", "./icon.svg"];
 
 self.addEventListener("install", (e) => {
