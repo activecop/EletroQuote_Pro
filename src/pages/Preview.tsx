@@ -300,7 +300,7 @@ export default function PreviewPage() {
           </div>
 
           <p className="mt-8 border-t border-[#e8ebf0] pt-3 text-center text-[10px] text-[#9aa3b2]">
-            {company.name} · NIF {company.nif} · Documento gerado com ELETROQUOTE PRO
+            {company.name} · NIF {company.nif} · Documento gerado com Electro-Cotação Pro
           </p>
         </div>
       </div>

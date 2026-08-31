@@ -4,8 +4,10 @@ import type { Article, Client, Company, CustomCategory, DB, Quote, QuoteStatus, 
 import { DEFAULT_COMPANY, buildSeed, emptyDb } from "./data";
 import { nowIso, uid } from "./calc";
 
-const DB_KEY = "electroquote.db.v1";
-const THEME_KEY = "electroquote.theme.v1";
+const DB_KEY = "electro-cotacao.db.v1";
+const LEGACY_DB_KEY = "electroquote.db.v1";
+const THEME_KEY = "electro-cotacao.theme.v1";
+const LEGACY_THEME_KEY = "electroquote.theme.v1";
 
 export interface Toast {
   id: string;
@@ -46,7 +48,7 @@ const Ctx = createContext<StoreApi | null>(null);
 
 function loadDb(): DB | null {
   try {
-    const raw = localStorage.getItem(DB_KEY);
+    const raw = localStorage.getItem(DB_KEY) ?? localStorage.getItem(LEGACY_DB_KEY);
     if (!raw) return null;
     const d = JSON.parse(raw) as DB;
     if (!d || !d.company || !Array.isArray(d.quotes)) return null;
@@ -58,7 +60,7 @@ function loadDb(): DB | null {
 
 function loadTheme(): Theme {
   try {
-    const t = localStorage.getItem(THEME_KEY);
+    const t = localStorage.getItem(THEME_KEY) ?? localStorage.getItem(LEGACY_THEME_KEY);
     if (t === "dark" || t === "light") return t;
   } catch {
     /* ignore */

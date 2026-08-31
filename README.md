@@ -1,4 +1,4 @@
-# ⚡ ELETROQUOTE PRO
+# ⚡ Electro-Cotação Pro
 
 **“Do primeiro ponto ao orçamento final.”**
 
