@@ -1,5 +1,7 @@
-const CACHE = "electroquote-pro-v1";
-const CORE = ["/", "/index.html", "/manifest.json", "/icon.svg"];
+/* ELETROQUOTE PRO — service worker com caminhos RELATIVOS
+   Funciona na raiz de um domínio, em subpastas (Laragon) e na Neocities. */
+const CACHE = "electroquote-pro-v2";
+const CORE = ["./", "./index.html", "./manifest.json", "./icon.svg"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
@@ -24,21 +26,21 @@ self.addEventListener("fetch", (e) => {
   if (req.method !== "GET") return;
   const url = new URL(req.url);
 
-  // network-first for navigations (fresh app shell when online, cache when offline)
+  // network-first para navegações (app shell fresco online, cache offline)
   if (req.mode === "navigate") {
     e.respondWith(
       fetch(req)
         .then((res) => {
           const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put("/index.html", copy)).catch(() => null);
+          caches.open(CACHE).then((c) => c.put("index.html", copy)).catch(() => null);
           return res;
         })
-        .catch(() => caches.match("/index.html").then((r) => r || caches.match("/")))
+        .catch(() => caches.match("index.html").then((r) => r || caches.match("./")))
     );
     return;
   }
 
-  // cache-first for same-origin static assets
+  // cache-first para recursos estáticos do mesmo domínio
   if (url.origin === self.location.origin) {
     e.respondWith(
       caches.match(req).then(
