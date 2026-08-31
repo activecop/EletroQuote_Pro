@@ -10,7 +10,7 @@
   "background_color": "#0b1120",
   "theme_color": "#0b1120",
   "icons": [
-    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
     {
       "src": "https://image.qwenlm.ai/generated-images/b2ee55a1-3731-4554-baa1-d88dc9a6c0c9/_result.png",
       "sizes": "512x512",
